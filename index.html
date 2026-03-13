@@ -1,69 +1,50 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>图片管理展示站 | GitHub 同步版</title>
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图片相册</title>
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 头部导航 -->
-    <header class="header">
-        <div class="container">
-            <h1><i class="fas fa-images"></i> 图片管理展示站（GitHub 同步）</h1>
-            <p>免费跨设备同步 | 存储在 GitHub 仓库 | 零成本、稳定可靠</p>
-        </div>
-    </header>
+<header class="header">
+<div class="container">
+<h1><i class="fas fa-images"></i> 图片相册</h1>
+<p>GitHub 存储 | 跨设备同步</p>
+</div>
+</header>
 
-    <!-- 同步状态区域 -->
-    <section class="config-section">
-        <div class="container">
-            <div class="config-box">
-                <h3><i class="fab fa-github"></i> GitHub 存储状态</h3>
-                <div class="config-info">
-                    <span class="status loading" id="github-status">
-                        <i class="fas fa-spinner fa-spin"></i> 正在连接 GitHub 仓库...
-                    </span>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="upload-section">
+<div class="container">
+<div class="upload-box">
+<label for="file-upload" class="upload-btn">
+<i class="fas fa-upload"></i> 选择图片上传
+</label>
+<input type="file" id="file-upload" multiple accept="image/*">
+<p class="tip">支持 JPG/PNG/GIF，单张 ≤20MB</p>
+</div>
+</div>
+</section>
 
-    <!-- 上传区域 -->
-    <section class="upload-section">
-        <div class="container">
-            <div class="upload-box">
-                <label for="file-upload" class="upload-btn">
-                    <i class="fas fa-upload"></i> 选择图片上传（同步 GitHub）
-                </label>
-                <input type="file" id="file-upload" multiple accept="image/*">
-                <p class="tip">支持JPG/PNG/GIF格式，单张≤20MB | 上传后自动同步到 GitHub 仓库</p>
-            </div>
-        </div>
-    </section>
+<section class="gallery-section">
+<div class="container">
+<div class="gallery-controls">
+<button id="sync-github" class="btn"><i class="fas fa-sync"></i> 同步</button>
+<button id="download-all" class="btn"><i class="fas fa-download"></i> 批量下载</button>
+<button id="clear-all" class="btn btn-danger"><i class="fas fa-trash"></i> 清空</button>
+</div>
+<div id="image-gallery" class="image-gallery">
+<div class="empty-tip">暂无图片</div>
+</div>
+</div>
+</section>
 
-    <!-- 图片展示区域 -->
-    <section class="gallery-section">
-        <div class="container">
-            <div class="gallery-controls">
-                <button id="sync-github" class="btn"><i class="fas fa-sync"></i> 手动同步 GitHub</button>
-                <button id="download-all" class="btn"><i class="fas fa-download"></i> 批量下载所有图片</button>
-                <button id="clear-all" class="btn btn-danger"><i class="fas fa-trash"></i> 清空所有图片</button>
-            </div>
-            <div id="image-gallery" class="image-gallery">
-                <div class="empty-tip">暂无图片，点击上传按钮添加</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 底部 -->
-    <footer class="footer">
-        <div class="container">
-            <p>存储仓库：github.com/maomingwuzixi/image-gallery | 跨设备：所有设备访问同一仓库</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+<footer class="footer">
+<div class="container">
+<p>存储于 GitHub 仓库</p>
+</div>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
