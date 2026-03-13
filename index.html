@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片管理展示站 | 网盘同步版</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-images"></i> 图片管理展示站（网盘同步）</h1>
+            <p>支持图片上传/预览/下载/跨设备同步 | 对接Nextcloud网盘</p>
+        </div>
+    </header>
+
+    <!-- 网盘配置区域 -->
+    <section class="config-section">
+        <div class="container">
+            <div class="config-box">
+                <h3><i class="fas fa-cloud"></i> 网盘配置（已预设你的账号）</h3>
+                <div class="config-info">
+                    <span class="status" id="cloud-status">
+                        <i class="fas fa-spinner fa-spin"></i> 正在连接网盘...
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 上传区域 -->
+    <section class="upload-section">
+        <div class="container">
+            <div class="upload-box">
+                <label for="file-upload" class="upload-btn">
+                    <i class="fas fa-upload"></i> 选择图片上传（自动同步网盘）
+                </label>
+                <input type="file" id="file-upload" multiple accept="image/*">
+                <p class="tip">支持JPG/PNG/GIF格式，单张≤5MB | 上传后自动同步到Nextcloud网盘</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 图片展示区域 -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-controls">
+                <button id="sync-cloud" class="btn"><i class="fas fa-sync"></i> 手动同步网盘</button>
+                <button id="download-all" class="btn"><i class="fas fa-download"></i> 批量下载所有图片</button>
+                <button id="clear-all" class="btn btn-danger"><i class="fas fa-trash"></i> 清空所有图片</button>
+            </div>
+            <div id="image-gallery" class="image-gallery">
+                <!-- 图片会通过JS动态生成 -->
+                <div class="empty-tip">暂无图片，点击上传按钮添加</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="footer">
+        <div class="container">
+            <p>存储方式：Nextcloud网盘同步 + 本地缓存 | 网盘地址：ivo.lv.tab.digital</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
