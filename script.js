@@ -1,12 +1,12 @@
-// ========== GitHub 仓库配置（已为你填好 + 你的真实 token） ==========
+// ========== GitHub 仓库配置（已替换为你新提供的 token） ==========
 const GITHUB_CONFIG = {
     owner: 'maomingwuzixi',
     repo: 'image-gallery',
     branch: 'main',
     imageDir: 'images/',
     apiBaseUrl: 'https://api.github.com/repos',
-    // 👇 已替换为你提供的 PAT
-    token: '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'
+    // 👇 已替换为你新提供的 PAT
+    token: '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'
 };
 
 // ========== 本地缓存配置 ==========
