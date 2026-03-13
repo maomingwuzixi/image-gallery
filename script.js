@@ -1,10 +1,12 @@
-// ========== GitHub 仓库配置（已为你填好！） ==========
+// ========== GitHub 仓库配置（已为你填好 + 你的真实 token） ==========
 const GITHUB_CONFIG = {
-    owner: 'maomingwuzixi', // 你的 GitHub 用户名
-    repo: 'image-gallery',   // 你的仓库名
-    branch: 'main',         // 仓库分支
-    imageDir: 'images/',    // 图片存储文件夹（自动创建）
-    apiBaseUrl: 'https://api.github.com/repos'
+    owner: 'maomingwuzixi',
+    repo: 'image-gallery',
+    branch: 'main',
+    imageDir: 'images/',
+    apiBaseUrl: 'https://api.github.com/repos',
+    // 👇 已替换为你提供的 PAT
+    token: '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'
 };
 
 // ========== 本地缓存配置 ==========
@@ -93,16 +95,17 @@ async function handleFileUpload(e) {
             // 读取文件为 Base64
             const base64Data = await fileToBase64(file);
             
-            // 上传到 GitHub
+            // 上传到 GitHub（已加 token）
             const uploadResponse = await fetch(`${GITHUB_CONFIG.apiBaseUrl}/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${fileUrl}`, {
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/vnd.github.v3+json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `token ${GITHUB_CONFIG.token}`
                 },
                 body: JSON.stringify({
-                    message: `Upload image: ${fileName}`, // 提交信息
-                    content: base64Data.split(',')[1], // Base64 去掉前缀
+                    message: `Upload image: ${fileName}`,
+                    content: base64Data.split(',')[1],
                     branch: GITHUB_CONFIG.branch
                 })
             });
@@ -114,7 +117,7 @@ async function handleFileUpload(e) {
                     id: Date.now() + i,
                     name: file.name,
                     fileName: fileName,
-                    url: result.content.download_url, // GitHub 图片直接下载地址
+                    url: result.content.download_url,
                     size: (file.size / 1024).toFixed(2) + 'KB',
                     time: new Date().toLocaleString()
                 };
@@ -173,7 +176,7 @@ async function loadImagesFromGithub() {
         // 转换为图片数据格式
         const images = imageFiles.map((file, index) => ({
             id: Date.now() + index,
-            name: file.name.replace(/^\d+_/, ''), // 去掉前缀
+            name: file.name.replace(/^\d+_/, ''),
             fileName: file.name,
             url: file.download_url,
             size: (file.size / 1024).toFixed(2) + 'KB',
@@ -282,7 +285,7 @@ function downloadAllImages() {
     }
 }
 
-// ========== 10. 删除单张图片（同步删除 GitHub 图片） ==========
+// ========== 10. 删除单张图片（同步删除 GitHub 图片，已加 token） ==========
 async function deleteSingleImage(id, fileName) {
     if (!confirm('确认删除这张图片吗？GitHub 和所有设备都会同步删除！')) return;
 
@@ -300,11 +303,12 @@ async function deleteSingleImage(id, fileName) {
                     method: 'DELETE',
                     headers: {
                         'Accept': 'application/vnd.github.v3+json',
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': `token ${GITHUB_CONFIG.token}`
                     },
                     body: JSON.stringify({
                         message: `Delete image: ${fileName}`,
-                        sha: fileData.sha, // 必须传入文件的 SHA 值
+                        sha: fileData.sha,
                         branch: GITHUB_CONFIG.branch
                     })
                 });
@@ -327,7 +331,7 @@ async function deleteSingleImage(id, fileName) {
     }
 }
 
-// ========== 11. 清空所有图片 ==========
+// ========== 11. 清空所有图片（已加 token） ==========
 async function clearAllImages() {
     const images = getImagesFromCache();
     if (images.length === 0) {
@@ -350,7 +354,8 @@ async function clearAllImages() {
                         method: 'DELETE',
                         headers: {
                             'Accept': 'application/vnd.github.v3+json',
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'Authorization': `token ${GITHUB_CONFIG.token}`
                         },
                         body: JSON.stringify({
                             message: `Delete all images`,
