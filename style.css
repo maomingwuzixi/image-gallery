@@ -48,7 +48,7 @@ body {
     opacity: 0.9;
 }
 
-/* 网盘配置区域 */
+/* 同步状态区域 */
 .config-section {
     padding: 1.5rem 0;
     background-color: var(--white);
