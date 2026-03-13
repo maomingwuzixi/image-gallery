@@ -1,0 +1,255 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+:root {
+    --primary: #2563eb;
+    --secondary: #f1f5f9;
+    --danger: #ef4444;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --text: #334155;
+    --light-text: #64748b;
+    --white: #ffffff;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    background-color: var(--secondary);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* 头部样式 */
+.header {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* 网盘配置区域 */
+.config-section {
+    padding: 1.5rem 0;
+    background-color: var(--white);
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.config-box {
+    text-align: center;
+}
+
+.config-box h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.status {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.status.success {
+    background-color: #dcfce7;
+    color: var(--success);
+}
+
+.status.error {
+    background-color: #fee2e2;
+    color: var(--danger);
+}
+
+.status.loading {
+    background-color: #fef3c7;
+    color: var(--warning);
+}
+
+/* 上传区域 */
+.upload-section {
+    padding: 3rem 0;
+    background-color: var(--white);
+    margin: 2rem 0;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.upload-box {
+    text-align: center;
+}
+
+.upload-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.upload-btn:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+#file-upload {
+    display: none;
+}
+
+.tip {
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+/* 图片展示区域 */
+.gallery-section {
+    padding: 2rem 0;
+}
+
+.gallery-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--primary);
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-danger {
+    background-color: var(--danger);
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.empty-tip {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--light-text);
+    padding: 3rem 0;
+    font-size: 1.1rem;
+}
+
+/* 图片卡片样式 */
+.image-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.image-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.image-preview {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    cursor: zoom-in;
+}
+
+.image-actions {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.download-btn {
+    color: var(--primary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.download-btn:hover {
+    color: #1d4ed8;
+}
+
+.delete-btn {
+    color: var(--danger);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.delete-btn:hover {
+    color: #dc2626;
+}
+
+/* 底部样式 */
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--light-text);
+    font-size: 0.9rem;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 3rem;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .gallery-controls {
+        justify-content: center;
+    }
+
+    .header h1 {
+        font-size: 1.6rem;
+    }
+
+    .image-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
